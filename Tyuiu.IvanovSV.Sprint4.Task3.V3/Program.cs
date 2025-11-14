@@ -2,60 +2,35 @@
 
 namespace Tyuiu.IvanovSV.Sprint4.Task3.V3
 {
-    class Program
-{
-    static void Main(string[] args)
+    internal class Program
     {
-        int[,] ar = new int[5, 5] { { 9, 4, 5, 4, 8 },
-                                        { 7, 6, 7, 7, 4 },
-                                        { 4, 4, 3, 5, 6 },
-                                        { 6, 5, 9, 4, 9 },
-                                        { 9, 7, 8, 7, 7 } };
-
-        int rows = ar.GetUpperBound(0) + 1;
-        int columns = ar.Length / rows;
-
-        DataService ds = new DataService();
-
-        Console.Title = "Спринт #4 | Выполнил: Иванов С. В. | ИСТНб-25-1";
-        Console.WriteLine("***************************************************************************");
-        Console.WriteLine("* Спринт #4                                                               *");
-        Console.WriteLine("* Тема: Двумерные массивы (статический ввод)                              *");
-        Console.WriteLine("* Задание #3                                                              *");
-        Console.WriteLine("* Вариант #3                                                              *");
-        Console.WriteLine("* Выполнил: Иванов С. В. | ИСТНб-25-1                     *");
-        Console.WriteLine("***************************************************************************");
-        Console.WriteLine("* УСЛОВИЕ:                                                                *");
-        Console.WriteLine("* Дан двумерный целочисленный массив 5 на 5 элементов, заполненный        *");
-        Console.WriteLine("* статическими значениями в диапазоне от 3 до 9. Подсчитайте количество   *");
-        Console.WriteLine("* нечетных элементов во всем массиве.                                     *");
-        Console.WriteLine("*                                                                         *");
-        Console.WriteLine("***************************************************************************");
-        Console.WriteLine("* ИСХОДНЫЕ ДАННЫЕ:                                                        *");
-        Console.WriteLine("***************************************************************************");
-        Console.WriteLine("Массив:");
-
-        for (int i = 0; i < rows; i++)
+        static void Main(string[] args)
         {
-            for (int j = 0; j < columns; j++)
+
+            Console.WriteLine("* УСЛОВИЕ:                                                                *");
+            Console.WriteLine("* Дан двумерный целочисленный массив 5 на 5 элементов, заполненный        *");
+            Console.WriteLine("* статическими значениями в диапазоне от 2 до 9. Найдите сумму элементов  *");
+            Console.WriteLine("* в первом столбце массива.                                               *");
+            Console.WriteLine("***************************************************************************");
+            Console.WriteLine("* ИСХОДНЫЕ ДАННЫЕ:                                                        *");
+            Console.WriteLine("***************************************************************************");
+            DataService ds = new DataService();
+            Console.WriteLine("Массив:");
+            int[,] array = new int[,] { { 3, 4, 8, 6, 3 }, { 9, 9, 3, 6, 9 }, { 5, 6, 7, 2, 3 }, { 3, 6, 2, 3, 8 }, { 5, 7, 2, 6, 4 } };
+            for (int i = 0; i < array.GetLength(0); i++)
             {
-                Console.Write($"{ar[i, j]} \t");
+                for (int j = 0; j < array.GetLength(1); j++)
+                {
+                    Console.Write(array[i, j] + "\t");
+                }
+                Console.WriteLine();
             }
-
-            Console.WriteLine();
+            Console.WriteLine("***************************************************************************");
+            Console.WriteLine("* РЕЗУЛЬТАТ:                                                              *");
+            Console.WriteLine("***************************************************************************");
+            int res = ds.Calculate(array);
+            Console.WriteLine("Сумма элементов в первом стобце массива: " + res);
+            Console.ReadKey();
         }
-
-        Console.WriteLine();
-        Console.WriteLine("***************************************************************************");
-        Console.WriteLine("* РЕЗУЛЬТАТ:                                                              *");
-        Console.WriteLine("***************************************************************************");
-
-        int res = ds.Calculate(ar);
-
-
-        Console.WriteLine("Количество нечетных элементов во всем массиве = " + res);
-        Console.ReadKey();
-
     }
-}
 }
